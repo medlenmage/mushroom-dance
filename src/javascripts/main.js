@@ -14,6 +14,13 @@ const init = () => {
   authData.checkLogStatus();
   auth.loginBtn();
   myNav.logoutEvent();
+
+  $('body').on('mouseenter', '.myco-card', (e) => {
+    e.target.closest('.card').classList.add('bg-dark');
+  });
+  $('body').on('mouseleave', '.myco-card', (e) => {
+    e.target.closest('.card').classList.remove('bg-dark');
+  });
 };
 
 init();

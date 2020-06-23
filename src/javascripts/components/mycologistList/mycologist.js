@@ -1,6 +1,7 @@
 import mycologistComponent from '../mycologists/mycologists';
 import dom from '../../helpers/utils';
 import mycologistData from '../../helpers/data/mycologistData';
+import singleMycologist from '../singleMycologist/singleMycologist';
 
 const buildAcademy = () => {
   mycologistData.getMycologists()
@@ -18,6 +19,7 @@ const buildAcademy = () => {
       domString += '</div>';
 
       dom.printToDom('#academy', domString);
+      $('body').on('click', '.myco-card', singleMycologist.buildMycologist);
     })
     .catch((err) => console.error('get mushrooms broke :(', err));
   // const domString = 'I See Mushrooms';
