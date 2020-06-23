@@ -6,6 +6,7 @@ import mushList from '../../components/mushroomList/mushroomList';
 const authDiv = $('#auth');
 const forestDiv = $('#forest');
 const logoutButton = $('#navbar-logout-button');
+const singleMycoDiv = $('#single-myco');
 const academyDiv = $('#academy');
 
 const checkLogStatus = () => {
@@ -15,12 +16,14 @@ const checkLogStatus = () => {
       forestDiv.removeClass('hide');
       logoutButton.removeClass('hide');
       academyDiv.removeClass('hide');
+      singleMycoDiv.removeClass('hide');
       academy.buildAcademy();
       mushList.buildForest();
     } else {
       authDiv.removeClass('hide');
       forestDiv.addClass('hide');
       logoutButton.addClass('hide');
+      singleMycoDiv.addClass('hide');
       academyDiv.addClass('hide');
     }
   });
