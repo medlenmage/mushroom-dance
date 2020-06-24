@@ -1,13 +1,12 @@
-import mycologistData from '../../helpers/data/mycologistData';
+import smash from '../../helpers/data/smash';
 import utils from '../../helpers/utils';
 
 import './singleMycologist.scss';
 
 const buildMycologist = (e) => {
   const mycologistId = e.target.closest('.card').id;
-  mycologistData.getMycologistById(mycologistId)
-    .then((response) => {
-      const mycologist = response.data;
+  smash.getMycologistById(mycologistId)
+    .then((mycologist) => {
       const domString = `
         <h2 class="text-center">Featured Mycologist</h2>
         <div class="col-12">
