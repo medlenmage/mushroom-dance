@@ -6,6 +6,15 @@ import mushroomData from '../../helpers/data/mushroomData';
 // loop and create a domstring
 // print to dom
 
+const removeShroomEvent = (e) => {
+  const mushroomId = e.target.closest('.card').id;
+  mushroomData.deleteMushroom(mushroomId)
+    .then((response) => {
+      console.warn('response?', response);
+    })
+    .catach((err) => console.error('could not delete mushroom', err));
+};
+
 const buildForest = () => {
   mushroomData.getMushrooms()
     .then((mushrooms) => {
@@ -22,6 +31,7 @@ const buildForest = () => {
       domString += '</div>';
 
       dom.printToDom('#forest', domString);
+      $('body').on('click', 'delete-shroom', removeShroomEvent);
     })
     .catch((err) => console.error('get mushrooms broke :(', err));
   // const domString = 'I See Mushrooms';
