@@ -8,12 +8,12 @@ const getMushrooms = () => new Promise((resolve, reject) => {
     .then((response) => {
       const mushroomObjects = response.data;
       const mushrooms = [];
-      Object.keys(mushroomObjects).forEach((mushroomId) => {
-        // add the id onto each object
-        mushroomObjects[mushroomId].id = mushroomId;
-        mushrooms.push(mushroomObjects[mushroomId]);
-        // put object onto mushroom array
-      });
+      if (mushroomObjects) {
+        Object.keys(mushroomObjects).forEach((mushroomId) => {
+          mushroomObjects[mushroomId].id = mushroomId;
+          mushrooms.push(mushroomObjects[mushroomId]);
+        });
+      }
       // take the response
       // format into an array of objects
       // adding the id onto each object
