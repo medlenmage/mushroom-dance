@@ -1,4 +1,5 @@
 import mushroomComponent from '../mushroom/mushroom';
+import smash from '../../helpers/data/smash';
 import dom from '../../helpers/utils';
 import mushroomData from '../../helpers/data/mushroomData';
 
@@ -8,11 +9,16 @@ import mushroomData from '../../helpers/data/mushroomData';
 
 const removeShroomEvent = (e) => {
   const mushroomId = e.target.closest('.card').id;
-  mushroomData.deleteMushroom(mushroomId)
-    .then((response) => {
-      console.warn('response?', response);
+  console.warn(mushroomId);
+  // actually delete this mushroom from firebase
+  smash.totallyRemoveShroomie(mushroomId)
+    .then(() => {
+      // reprint the dom (so the lil shroomie goes away)
+      // eslint-disable-next-line no-use-before-define
+      buildForest();
+      dom.printToDom('#single-myco', '');
     })
-    .catach((err) => console.error('could not delete mushroom', err));
+    .catch((err) => console.error('could not delete mushroom', err));
 };
 
 const buildForest = () => {
