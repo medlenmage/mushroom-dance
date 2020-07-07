@@ -8,6 +8,7 @@ const forestDiv = $('#forest');
 const logoutButton = $('#navbar-logout-button');
 const singleMycoDiv = $('#single-myco');
 const academyDiv = $('#academy');
+const newShroomDiv = $('#new-shroom');
 
 const checkLogStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
@@ -17,6 +18,7 @@ const checkLogStatus = () => {
       logoutButton.removeClass('hide');
       academyDiv.removeClass('hide');
       singleMycoDiv.removeClass('hide');
+      newShroomDiv.removeClass('.hide');
       academy.buildAcademy();
       mushList.buildForest();
     } else {
@@ -25,6 +27,7 @@ const checkLogStatus = () => {
       logoutButton.addClass('hide');
       singleMycoDiv.addClass('hide');
       academyDiv.addClass('hide');
+      newShroomDiv.addClass('.hide');
     }
   });
   // if the user is logged in: show mushrooms, hide login button, show logout button
